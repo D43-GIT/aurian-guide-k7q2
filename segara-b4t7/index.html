@@ -107,7 +107,8 @@ section.s{padding:72px 0;scroll-margin-top:72px}
 .rows div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:17px;color:var(--bone3)}
 .rows b{color:var(--bone);font-weight:600;text-align:right}
 .plan .btn{margin-top:4px}
-@media (min-width:900px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+@media (min-width:900px){.plans{grid-template-columns:repeat(2,1fr);align-items:stretch}}
+@media (min-width:1100px){.plans{grid-template-columns:repeat(4,1fr)}}
 
 /* every plan */
 .ticks{display:grid;gap:12px;list-style:none;margin:0;padding:0}
@@ -167,7 +168,7 @@ footer p+p{margin-top:8px}
 .opt h3{font-size:26px;font-weight:600}
 .opt .big{font-family:var(--serif);font-size:58px;line-height:.9;color:var(--gold2);white-space:nowrap}
 .opt p{color:var(--bone2)}
-.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
 .mini div{background:var(--ink);border-radius:12px;padding:12px;font-size:16px;color:var(--bone3);line-height:1.35;min-width:0}
 .mini b{display:block;color:var(--bone);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
 .opt ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -278,20 +279,10 @@ footer p+p{margin-top:8px}
   </div>
 </section>
 
-<div class="lanehead wrap rv" style="padding-block:8px 8px">
-  <div class="ba" id="ba" style="margin-top:0">
-    <img src="../media/prop-site-today.webp" alt="Real drone photo of a beachfront site today, an empty block with a crane">
-    <img class="after" src="../media/prop-site-built.webp" alt="The same street at sunrise with the new building in place, an AI concept">
-    <span class="tagl">Real photo today</span><span class="tagr">AI concept</span>
-    <span class="handle"></span>
-    <input type="range" min="0" max="100" value="50" aria-label="Drag to compare today and the AI concept" id="baslider">
-  </div>
-  <p class="hint" style="display:block;margin-top:10px">From a recent job. Drag to compare.</p>
-</div>
 
 <section class="s" id="work">
   <div class="wrap">
-    <div class="sh rv"><h2>Our recent property work</h2><p>Every film is labelled "AI concept film".</p></div>
+    <div class="sh rv"><h2>Examples</h2><p>Every film is labelled "AI concept film".</p></div>
     <div class="reel wide rv">
       <figure style="background-image:url('../media/prop-drone-sunrise-poster.webp')"><video muted loop playsinline preload="none" poster="../media/prop-drone-sunrise-poster.webp" src="../media/prop-drone-sunrise-m.mp4"></video><span class="cap">Sunrise drone</span></figure>
       <figure style="background-image:url('../media/prop-terrace-poster.webp')"><video muted loop playsinline preload="none" poster="../media/prop-terrace-poster.webp" src="../media/prop-terrace-m.mp4"></video><span class="cap">Terrace</span></figure>
@@ -344,7 +335,7 @@ footer p+p{margin-top:8px}
       <article class="plan rv">
         <div class="pn"><h3>Segara 40</h3></div>
         <p class="for">A full month of ads to run.</p>
-        <div class="price">A$5,995<small>one-off</small></div>
+        <div class="price">A$7,495<small>one-off</small></div>
         <ul>
           <li><svg class="i"><use href="#i-check"/></svg><span>40 short videos</span></li>
           <li><svg class="i"><use href="#i-check"/></svg><span>Every room, view and moment</span></li>
@@ -390,7 +381,7 @@ footer p+p{margin-top:8px}
 <footer>
   <div class="wrap">
     <p><b>Brandon Hansen</b> · 0400 357 305 · hello@aurianhaus.com · aurianhaus.com</p>
-    <p>Prices in Australian dollars and include GST. Ad spend not included. Aurian Haus is a trading name of The Trustee for House of Hansen Trust, ABN 80 287 120 663.</p>
+    <p>Prices in Australian dollars and include GST. Ad spend not included. Aurian Haus is a brand operated by The Trustee for House of Hansen Trust, ABN 80 287 120 663.</p>
   </div>
 </footer>
 

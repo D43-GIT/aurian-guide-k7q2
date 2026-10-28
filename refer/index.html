@@ -107,7 +107,8 @@ section.s{padding:72px 0;scroll-margin-top:72px}
 .rows div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:17px;color:var(--bone3)}
 .rows b{color:var(--bone);font-weight:600;text-align:right}
 .plan .btn{margin-top:4px}
-@media (min-width:900px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+@media (min-width:900px){.plans{grid-template-columns:repeat(2,1fr);align-items:stretch}}
+@media (min-width:1100px){.plans{grid-template-columns:repeat(4,1fr)}}
 
 /* every plan */
 .ticks{display:grid;gap:12px;list-style:none;margin:0;padding:0}
@@ -167,7 +168,7 @@ footer p+p{margin-top:8px}
 .opt h3{font-size:26px;font-weight:600}
 .opt .big{font-family:var(--serif);font-size:58px;line-height:.9;color:var(--gold2);white-space:nowrap}
 .opt p{color:var(--bone2)}
-.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
 .mini div{background:var(--ink);border-radius:12px;padding:12px;font-size:16px;color:var(--bone3);line-height:1.35;min-width:0}
 .mini b{display:block;color:var(--bone);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
 .opt ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -304,8 +305,8 @@ footer p+p{margin-top:8px}
       </article>
       <article class="plan rv">
         <div class="pn"><h3>All up</h3></div>
-        <div class="price">A$1,144<small>example</small></div>
-        <p class="alt">One Starter client over 7 months. Bigger plans pay more.</p>
+        <div class="price">A$1,143<small>example</small></div>
+        <p class="alt">One Starter client: the first payment plus the next 6 months. Bigger plans pay more.</p>
       </article>
     </div>
     <ul class="ticks" style="margin-top:16px">
@@ -341,7 +342,7 @@ footer p+p{margin-top:8px}
 <footer>
   <div class="wrap">
     <p><b>Brandon Hansen</b> · 0400 357 305 · hello@aurianhaus.com · aurianhaus.com</p>
-    <p>Referral share is paid on what the client pays before GST, once their payment clears, for 6 months from their first payment. Aurian Haus is a trading name of The Trustee for House of Hansen Trust, ABN 80 287 120 663.</p>
+    <p>You get 15% of the client's first payment, then 5% of each monthly payment for the next 6 months, worked out before GST and paid once their payment clears. Aurian Haus is a brand operated by The Trustee for House of Hansen Trust, ABN 80 287 120 663.</p>
   </div>
 </footer>
 
