@@ -135,6 +135,33 @@ section.s{padding-block:72px;scroll-margin-top:80px}
 .reply .t{color:var(--bone3);font-size:16px;min-width:0}
 .reply .t b{display:block;color:var(--gold2);font-size:18px}
 
+
+/* v5 price ladder */
+.toggles{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-bottom:12px}
+.tg{display:grid;gap:6px}
+.tg>span{font-size:15px;color:var(--bone3);font-weight:600}
+.seg{display:inline-flex;flex-wrap:wrap;padding:5px;gap:4px;border-radius:24px;background:var(--card);border:1px solid var(--line)}
+.seg button{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:transparent;color:var(--bone3);font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap;transition:background .9s var(--ease),color .9s var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--ink2)}
+.qnote{color:var(--bone3);font-size:17px;margin-bottom:22px;min-height:1.5em}
+.ladder{display:grid;grid-auto-flow:column;grid-auto-columns:min(84%,320px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 2px 18px;scrollbar-width:none;scroll-padding-inline:2px}
+.ladder::-webkit-scrollbar{display:none}
+.ladder .plan{scroll-snap-align:start}
+.swipe{color:var(--bone3);font-size:16px;margin-top:2px}
+@media (min-width:700px){.ladder{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding:18px 0 0}.swipe{display:none}}
+@media (min-width:1100px){.ladder{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.plan .worth{font-size:16px;color:var(--bone3)}
+.plan .worth s{opacity:.8}
+.plan.off{opacity:.55}
+.plan{min-width:0}
+.ladder .price.na{font-family:var(--sans);font-size:22px;font-weight:600;white-space:normal;color:var(--bone3);line-height:1.2}
+.ladder .price{font-size:clamp(42px,3.6vw,50px);white-space:nowrap}
+.ladder .price small{display:block;margin:6px 0 0}
+.ladder .facts .w2{display:grid;gap:2px}
+.ladder .facts .w2 b{text-align:left;font-weight:500}
+.valuebar{margin-top:16px;padding:14px 18px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;color:var(--bone2);font-size:17px}
+.valuebar b{color:var(--gold2)}
+
 /* per sale */
 .ps{display:grid;gap:14px}
 .calc{padding:22px;display:grid;gap:14px}
@@ -297,42 +324,16 @@ footer p+p{margin-top:8px}
 
 <section class="s" id="pay">
   <div class="wrap">
-    <div class="sh rv"><span class="eyebrow">Prices</span><h2>One-off, like you asked</h2><p>You said one-off for now, so here's one-off. Want it cheaper upfront, or every month? Flip a switch.</p></div>
-    <div class="modes rv" role="group" aria-label="How you pay">
-      <button type="button" data-m="once" aria-pressed="true">Pay once</button>
-      <button type="button" data-m="sale" aria-pressed="false">Pay less + A$2,500 a sale</button>
-      <button type="button" data-m="month" aria-pressed="false">Monthly</button>
+    <div class="sh rv"><span class="eyebrow">Prices</span><h2>Pick your size</h2><p>You said one-off for now, so it opens on one-off. Want it cheaper upfront, or every month? Flip a switch.</p></div>
+    <div class="toggles rv">
+      <div class="tg"><span>Quality</span><div class="seg" id="qseg" role="group" aria-label="Quality"><button type="button" data-q="lean" aria-pressed="true">Lean</button><button type="button" data-q="sig" aria-pressed="false">Signature</button></div></div>
+      <div class="tg"><span>How you pay</span><div class="seg" id="mseg" role="group" aria-label="How you pay"><button type="button" data-m="once" aria-pressed="true">Pay once</button><button type="button" data-m="sale" aria-pressed="false">Pay less + A$2,500 a sale</button><button type="button" data-m="month" aria-pressed="false">Monthly</button></div></div>
     </div>
-    <p class="mnote" id="mnote" aria-live="polite">Pay once, keep every video. All prices plus GST.</p>
-    <div class="plans">
-      <article class="plan rv" data-pick="Full 40">
-        <span class="kind">Full 40</span>
-        <h3>4 concepts = 40 videos</h3>
-        <div class="price" data-p="Full 40">A$8,995<small>+ GST</small></div>
-        <p class="extra" data-x="Full 40">Everything you asked for</p>
-        <div class="facts"><div>Cinematic cuts<b>10</b></div><div>Buyer versions<b>20</b></div><div>Extras<b>10</b></div><div>Ready in<b>about 5 weeks</b></div></div>
-        <button type="button" class="choose" aria-pressed="false">Choose Full 40</button>
-      </article>
-      <article class="plan rec rv" data-pick="Pilot">
-        <span class="tag">Recommended</span>
-        <span class="kind">Pilot</span>
-        <h3>2 concepts = 20 videos</h3>
-        <div class="price" data-p="Pilot">A$4,995<small>+ GST</small></div>
-        <p class="extra" data-x="Pilot">See how it sells before you go big</p>
-        <div class="facts"><div>Cinematic cuts<b>about 5</b></div><div>Buyer versions<b>10</b></div><div>Extras<b>about 5</b></div><div>Ready in<b>about 3 weeks</b></div></div>
-        <button type="button" class="choose" aria-pressed="true">Chosen ✓</button>
-      </article>
-      <article class="plan rv" data-pick="Taster">
-        <span class="kind">Taster</span>
-        <h3>A quick peek first</h3>
-        <div class="price" data-p="Taster">A$995<small>+ GST</small></div>
-        <p class="extra" data-x="Taster">Comes off the Pilot if you go ahead</p>
-        <div class="facts"><div>Videos<b>2 moving shots</b></div><div>Plus<b>1 still</b></div><div>From<b>your renders</b></div><div>Ready in<b>about 5 days</b></div></div>
-        <button type="button" class="choose" aria-pressed="false">Choose Taster</button>
-      </article>
-    </div>
-    <p class="allp rv">Every option: vertical 9:16 plus landscape, one round of changes, and you sign off quick test clips before we make the finals.</p>
-    <div class="reply glass rv"><span class="t">Your pick<b id="picked">Pilot · A$4,995 + GST one-off</b></span><a class="btn gold wa" href="https://wa.me/61400357305"><svg class="i"><use href="#i-wa"/></svg>Message us on WhatsApp</a></div>
+    <p class="qnote" id="qnote" aria-live="polite"></p>
+    <div class="ladder" id="ladder"></div>
+    <p class="swipe">Swipe for more sizes ›</p>
+    <p class="valuebar glass rv">💎 <span>At full Signature care, all 40 videos are worth <b>A$16,995</b>.</span><span>Every option: vertical 9:16 plus landscape, one round of changes, and you sign off quick test clips first.</span></p>
+    <div class="reply glass rv"><span class="t">Your pick<b id="picked">Pilot · Lean · A$6,495 + GST one-off</b></span><a class="btn gold wa" href="https://wa.me/61400357305"><svg class="i"><use href="#i-wa"/></svg>Message us on WhatsApp</a></div>
   </div>
 </section>
 
@@ -375,30 +376,44 @@ footer p+p{margin-top:8px}
 
 <script>
 (function(){
-const PR={once:{'Full 40':'A$8,995','Pilot':'A$4,995','Taster':'A$995'},sale:{'Full 40':'A$4,995','Pilot':'A$2,995','Taster':'A$995'},month:{'Full 40':'A$7,495','Pilot':'A$3,995','Taster':'A$995'}};
-const SUF={once:'+ GST',sale:'+ GST',month:'+ GST a month'};
-const X={once:{'Full 40':'Everything you asked for','Pilot':'See how it sells before you go big','Taster':'Comes off the Pilot if you go ahead'},
-  sale:{'Full 40':'+ A$2,500 for each apartment sold through our links','Pilot':'+ A$2,500 for each apartment sold through our links','Taster':'Comes off the Pilot if you go ahead'},
-  month:{'Full 40':'40 new videos every month','Pilot':'20 new videos every month','Taster':'Comes off your first month'}};
-const NOTE={once:'Pay once, keep every video. All prices plus GST.',sale:'Pay less now, plus A$2,500 only when a buyer from our links signs. All prices plus GST.',month:'New concepts every month, for Segara and your next builds. 3 months minimum. All prices plus GST.'};
-let mode='once',pick='Pilot';
-const label=()=>pick==='Taster'?'Taster · A$995 + GST':`${pick} · ${PR[mode][pick]} + GST${mode==='once'?' one-off':mode==='sale'?' + A$2,500 a sale':' a month'}`;
-function sync(){
+const P=[
+ {k:'hero',name:'Hero film',head:'1 film + 2 cuts',vids:'3',kinds:'One 30 s film + 15 s and 6 s cuts',ready:'about 2 weeks',
+  once:{lean:2495,sig:3495},sale:{lean:1495,sig:1995},month:null,note:'For the website and the launch'},
+ {k:'one',name:'One concept',head:'1 concept = 10 videos',vids:'10',kinds:'2-3 cinematic · 5 buyer versions · 2-3 extras',ready:'about 2 weeks',
+  once:{lean:3995,sig:5495},sale:{lean:2495,sig:3495},month:{lean:3495,sig:4995},mlabel:'1 concept a month',note:'A real start, every buyer covered'},
+ {k:'pilot',name:'Pilot',head:'2 concepts = 20 videos',vids:'20',kinds:'about 5 cinematic · 10 buyer versions · about 5 extras',ready:'about 3 weeks',rec:1,
+  once:{lean:6495,sig:9495},sale:{lean:3995,sig:5495},month:{lean:5995,sig:8495},mlabel:'2 concepts a month',note:'See how it sells before you go big'},
+ {k:'full',name:'Full 40',head:'4 concepts = 40 videos',vids:'40',kinds:'10 cinematic · 20 buyer versions · 10 extras',ready:'about 5 weeks',
+  once:{lean:11995,sig:16995},sale:{lean:6995,sig:9995},month:{lean:10995,sig:14995},mlabel:'4 concepts a month',note:'Everything you asked for'}
+];
+const QN={lean:'Lean: one look for Segara, kept simple. Great value.',sig:'Signature: 86 Hedges level. More takes, more shots, extra polish.'};
+const MN={once:'Pay once, keep every video. All prices plus GST.',sale:'Pay less now, plus A$2,500 only when a buyer from our links signs. All prices plus GST.',month:'New concepts every month, for Segara and your next builds. 3 months minimum. All prices plus GST.'};
+let q='lean',mode='once',pick='pilot';
+const money=v=>'A$'+v.toLocaleString('en-AU');
+function priceOf(p){const t=p[mode];return t?t[q]:null}
+function label(){const p=P.find(x=>x.k===pick),v=priceOf(p);const qual=q==='lean'?'Lean':'Signature';
+  if(v==null)return `${p.name} · ${qual}`;
+  return `${mode==='month'?p.mlabel:p.name} · ${qual} · ${money(v)} + GST${mode==='once'?' one-off':mode==='sale'?' + A$2,500 a sale':' a month'}`;}
+function render(){
+  document.getElementById('qnote').textContent=QN[q]+' '+MN[mode];
+  document.getElementById('ladder').innerHTML=P.map(p=>{const v=priceOf(p);const on=p.k===pick;
+    const extra=mode==='sale'&&v!=null?'+ A$2,500 for each apartment sold through our links':(mode==='month'&&v!=null?p.mlabel:p.note);
+    const worth=p.k==='full'&&q==='lean'&&mode==='once'?'<span class="worth">Signature version: A$16,995</span>':(p.k==='full'&&q==='sig'&&mode==='once'?'<span class="worth">Full value, every shot polished</span>':'');
+    return `<article class="plan${p.rec?' rec':''}${v==null?' off':''}" data-k="${p.k}">${p.rec?'<span class="tag">Recommended</span>':''}
+      <span class="kind">${p.name}</span><h3>${p.head}</h3>
+      <div class="price${v==null?' na':''}">${v==null?'One-off only (not monthly)':money(v)+'<small>+ GST'+(mode==='month'?' a month':'')+'</small>'}</div>
+      ${worth}<p class="extra">${extra}</p>
+      <div class="facts"><div>Videos<b>${p.vids}</b></div><div class="w2">What<b>${p.kinds}</b></div><div>Sizes<b>9:16 + landscape</b></div><div>Ready in<b>${p.ready}</b></div></div>
+      <button type="button" class="choose" aria-pressed="${on}" ${v==null?'disabled':''}>${on?'Chosen ✓':'Choose '+p.name}</button></article>`}).join('');
+  document.querySelectorAll('#ladder .choose').forEach(b=>b.addEventListener('click',()=>{pick=b.closest('.plan').dataset.k;render();}));
   document.getElementById('picked').textContent=label();
   const href='https://wa.me/61400357305?text='+encodeURIComponent(`Hi Brandon, I'd like the ${label()} for Segara`);
   document.querySelectorAll('a.wa').forEach(a=>a.href=href);
-  document.querySelectorAll('[data-pick]').forEach(c=>{const on=c.dataset.pick===pick,b=c.querySelector('.choose');b.setAttribute('aria-pressed',on);b.textContent=on?'Chosen ✓':'Choose '+c.dataset.pick;});
-}
-document.querySelectorAll('[data-pick] .choose').forEach(b=>b.addEventListener('click',()=>{pick=b.closest('[data-pick]').dataset.pick;sync();}));
-document.querySelectorAll('.modes button').forEach(b=>b.addEventListener('click',()=>{
-  mode=b.dataset.m;document.querySelectorAll('.modes button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  document.getElementById('mnote').textContent=NOTE[mode];
-  document.querySelectorAll('[data-p]').forEach(el=>{el.classList.add('fade');setTimeout(()=>{const k=el.dataset.p;el.innerHTML=PR[mode][k]+'<small>'+(k==='Taster'?'+ GST':SUF[mode])+'</small>';el.classList.remove('fade');},450);});
-  document.querySelectorAll('[data-x]').forEach(el=>el.textContent=X[mode][el.dataset.x]);
   document.getElementById('sale').hidden=mode!=='sale';
-  sync();
-}));
-sync();
+}
+document.querySelectorAll('#qseg button').forEach(b=>b.addEventListener('click',()=>{q=b.dataset.q;document.querySelectorAll('#qseg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
+document.querySelectorAll('#mseg button').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.m;document.querySelectorAll('#mseg button').forEach(x=>x.setAttribute('aria-pressed',x===b));if(mode==='month'&&pick==='hero')pick='pilot';render();}));
+render();
 const n=document.getElementById('n');
 function upd(){const k=+n.value;document.getElementById('nv').textContent=k;const sold=k*190000;
   document.getElementById('sold').textContent=sold>=1e6?'A$'+(sold/1e6).toFixed(2)+'M':'A$'+(sold/1000).toFixed(0)+'k';
