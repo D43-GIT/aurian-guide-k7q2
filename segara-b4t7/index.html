@@ -88,13 +88,13 @@ section.s{padding:72px 0;scroll-margin-top:72px}
 
 /* render to film */
 .r2f{display:grid;gap:16px}
-.pair{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:12px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px;padding:12px}
 .pair figure{margin:0;position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:var(--solid) center/cover}
-.pair video{width:100%;height:100%;object-fit:cover}
+.pair figure{min-width:0}.pair video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
 .pair .arrow{color:var(--gold2);font-size:26px}
 .lab{position:absolute;left:8px;top:8px;font-size:16px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(15,14,12,.78)}
 .lab.g{color:var(--gold2)}
-@media (min-width:900px){.r2f{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.r2f{grid-template-columns:1fr 1fr}.pair{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}}
 
 /* ways to pay */
 .ways{display:grid;gap:22px;align-items:center}
@@ -120,7 +120,54 @@ section.s{padding:72px 0;scroll-margin-top:72px}
 .monthly{margin-top:22px;padding:20px 22px;display:grid;gap:12px;align-items:center}
 .monthly .price{font-family:var(--serif);font-size:44px;line-height:1;white-space:nowrap}
 @media (max-width:899px){.way.rec{order:-1;margin-top:10px}}
-@media (min-width:900px){.ways{grid-template-columns:1fr 1.15fr 1fr}.way.rec{padding:34px 26px 28px}.monthly{grid-template-columns:auto 1fr auto auto;gap:20px}}
+@media (min-width:900px){.ways{grid-template-columns:1fr 1.15fr 1fr}.way.rec{padding:34px 26px 28px}.monthly{grid-template-columns:auto 1fr auto;gap:20px}}
+
+
+/* concept method */
+.method{display:grid;gap:14px}
+.flow{display:grid;gap:14px;align-items:stretch}
+.one{padding:22px;display:grid;gap:10px;align-content:center;text-align:center}
+.one .n{font-family:var(--serif);font-size:72px;line-height:.85;color:var(--gold2)}
+.one h3{font-size:22px;font-weight:600}
+.one p{color:var(--bone3);font-size:17px}
+.eq{display:grid;place-items:center;color:var(--gold2);font-size:30px}
+.sum{padding:16px 20px;color:var(--bone2)}
+.sum b{color:var(--gold2)}
+.one{grid-template-columns:auto 1fr;text-align:left;align-items:center;gap:6px 16px}.one .n{grid-row:span 2}.eq{font-size:26px}
+@media (min-width:860px){.method .get{grid-template-columns:repeat(3,1fr)}.method .gcard{min-height:380px}}
+
+/* plans */
+.modes{display:inline-flex;padding:5px;gap:4px;border-radius:999px;background:rgba(15,14,12,.5);border:1px solid var(--line);margin-bottom:26px;flex-wrap:wrap}
+.modes button{min-height:48px;padding:0 20px;border-radius:999px;border:0;background:transparent;color:var(--bone3);font-weight:600;font-size:17px;cursor:pointer;transition:background .9s var(--ease),color .9s var(--ease)}
+.modes button[aria-pressed="true"]{background:var(--gold);color:var(--ink2)}
+.plans{display:grid;gap:22px;align-items:center}
+.plans .way .price{transition:opacity .9s var(--ease)}
+.plans .way .price.fade{opacity:0}
+.persale{color:var(--gold2);font-weight:600;min-height:1.5em}
+@media (min-width:900px){.plans{grid-template-columns:1.12fr 1fr}}
+.mrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.mopt{padding:10px 16px;border-radius:16px;border:1.5px solid var(--line);background:rgba(15,14,12,.4);cursor:pointer;text-align:left;display:grid;gap:2px;transition:border-color .9s var(--ease),background .9s var(--ease)}
+.mopt b{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1}
+.mopt span{font-size:16px;color:var(--bone3)}
+.mopt[aria-pressed="true"]{border-color:var(--gold);background:rgba(201,166,107,.16)}
+.taster{margin-top:16px;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;color:var(--bone2);font-size:17px}
+.taster b{color:var(--bone)}
+.taster button{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--gline);background:transparent;cursor:pointer;font-weight:600;font-size:16px}
+.taster button[aria-pressed="true"]{background:var(--gold);color:var(--ink2);border-color:var(--gold)}
+
+/* week timeline */
+.tabs{display:inline-flex;padding:4px;gap:4px;border-radius:999px;background:rgba(15,14,12,.5);border:1px solid var(--line);margin-bottom:18px}
+.tabs button{min-height:44px;padding:0 18px;border-radius:999px;border:0;background:transparent;color:var(--bone3);font-weight:600;font-size:16px;cursor:pointer;transition:background .9s var(--ease),color .9s var(--ease)}
+.tabs button[aria-pressed="true"]{background:var(--gold);color:var(--ink2)}
+.weeks{display:grid;gap:10px}
+.wrow{display:grid;grid-template-columns:86px 1fr auto;gap:14px;align-items:center;padding:14px 18px;animation:pop 1s var(--ease)}
+.wrow .w{color:var(--gold2);font-weight:600}
+.wrow h3{font-size:19px;font-weight:600}
+.wrow p{color:var(--bone3);font-size:16px}
+.wrow .tot{font-family:var(--serif);font-size:34px;color:var(--gold2);line-height:1;text-align:right;min-width:64px}
+.wrow .tot small{display:block;font-family:var(--sans);font-size:14px;color:var(--bone3)}
+.wrow.slow{border-color:var(--gline)}
+@media (max-width:480px){.wrow{grid-template-columns:1fr auto}.wrow .w{grid-column:1/-1}}
 
 /* per sale */
 .ps{display:grid;gap:16px}
@@ -158,7 +205,7 @@ section.s{padding:72px 0;scroll-margin-top:72px}
 .grid{display:grid;gap:12px;grid-template-columns:1fr}
 .grid figure{position:relative;margin:0;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--solid) center/cover;transition:border-color 1s var(--ease)}
 .grid figure:hover{border-color:var(--gold)}
-.grid video{width:100%;height:100%;object-fit:cover}
+.grid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
 .cap{position:absolute;left:10px;bottom:10px;font-size:16px;font-weight:500;padding:4px 11px;border-radius:999px;background:rgba(15,14,12,.78)}
 @media (min-width:600px){.grid{grid-template-columns:1fr 1fr}}
 @media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -206,12 +253,12 @@ footer p+p{margin-top:8px}
   <span class="from">From our recent property film</span>
   <div class="wrap">
     <span class="eyebrow">For Beau · Axora Developments</span>
-    <h1>Segara, <em>in 40 films.</em></h1>
-    <p class="lede">We turn your Segara renders into 40 short videos to sell apartments. Ready in about 4 weeks.</p>
+    <h1>Segara, <em>on film.</em></h1>
+    <p class="lede">We turn your Segara renders into short films that sell apartments. One big concept a week, about 10 videos from each.</p>
     <div class="chips">
-      <div class="chip glass"><b>40</b><span>short videos</span></div>
-      <div class="chip glass"><b>4</b><span>kinds of buyer</span></div>
-      <div class="chip glass"><b>4 weeks</b><span>start to finish</span></div>
+      <div class="chip glass"><b>1</b><span>concept a week</span></div>
+      <div class="chip glass"><b>10</b><span>videos from each</span></div>
+      <div class="chip glass"><b>5</b><span>kinds of buyer</span></div>
       <div class="chip glass"><b>0</b><span>filming needed</span></div>
     </div>
   </div>
@@ -219,13 +266,18 @@ footer p+p{margin-top:8px}
 
 <main>
 <section class="s" id="get">
-  <div class="wrap">
-    <div class="sh rv"><span class="eyebrow">What you get</span><h2>40 videos, three kinds</h2><p>All made from the Segara renders you already have.</p></div>
-    <div class="get">
-      <article class="gcard rv"><div class="ph" style="background-image:url('r/facade.webp')"></div><div class="in"><span class="n">10</span><h3>Cinematic films</h3><p>The big, beautiful ones. Segara at sunrise, sunset and night.</p></div></article>
-      <article class="gcard rv"><div class="ph" style="background-image:url('r/penthouse.webp')"></div><div class="in"><span class="n">20</span><h3>One for each buyer</h3><p>Same building, a different voice-over and hook for each kind of buyer.</p><div class="tags"><span>🇦🇺 Aussie investor</span><span>🇳🇱 Dutch investor</span><span>💻 Digital nomad</span><span>🌴 Holiday home</span></div></div></article>
-      <article class="gcard rv"><div class="ph" style="background-image:url('r/wellness.webp')"></div><div class="in"><span class="n">10</span><h3>Extras</h3><p>Rooftop pool, gym, café, co-working. Quick clips for stories and ads.</p></div></article>
+  <div class="wrap method">
+    <div class="sh rv"><span class="eyebrow">How we make it</span><h2>1 concept becomes about 10 videos</h2><p>Each concept is a 20 to 30 second hero film made from your Segara renders. Then we cut it up.</p></div>
+    <div class="flow">
+      <div class="one glass rv"><span class="n">1</span><h3>Concept</h3><p>A 20-30 s hero film of Segara</p></div>
+      <div class="eq rv" aria-hidden="true">↓</div>
+      <div class="get">
+        <article class="gcard rv"><div class="ph" style="background-image:url('r/facade.webp')"></div><div class="in"><span class="n">2-3</span><h3>Cinematic cuts</h3><p>30 s and 15 s, vertical and landscape.</p></div></article>
+        <article class="gcard rv"><div class="ph" style="background-image:url('r/penthouse.webp')"></div><div class="in"><span class="n">5</span><h3>One for each buyer</h3><p>A different voice-over and hook each.</p><div class="tags"><span>🇦🇺 Aussie investor</span><span>🇳🇱 Dutch investor</span><span>💻 Digital nomad</span><span>🌴 Holiday home</span><span>🌅 Retiree</span></div></div></article>
+        <article class="gcard rv"><div class="ph" style="background-image:url('r/wellness.webp')"></div><div class="in"><span class="n">2-3</span><h3>Extras</h3><p>Amenity snippets, stills brought to life, story frames.</p></div></article>
+      </div>
     </div>
+    <p class="sum glass rv">🎬 <b>4 concepts = 40 videos:</b> 10 cinematic, 20 for different buyers, 10 extras. Just like you asked.</p>
   </div>
 </section>
 
@@ -249,66 +301,59 @@ footer p+p{margin-top:8px}
 
 <section class="s" id="pay">
   <div class="wrap">
-    <div class="sh rv"><span class="eyebrow">Prices</span><h2>3 ways to pay</h2><p>All prices plus GST. Every option comes vertical 9:16 plus square or landscape, with one round of changes. You sign off quick test clips before we make the finals.</p></div>
-    <div class="ways">
-      <article class="way glass rv" data-pick="Taster">
-        <span class="kind">Pay once</span>
-        <p class="say">Try it small first.</p>
-        <h3>Taster</h3>
-        <div class="price">A$995<small>+ GST</small></div>
-        <div class="facts">
-          <div>Videos<b>2 moving shots + 1 still</b></div>
-          <div>From<b>your Segara renders</b></div>
-          <div>Ready in<b>about 5 days</b></div>
-          <div>Bonus<b>counts towards the Launch Pack</b></div>
-        </div>
-        <button type="button" class="choose" aria-pressed="false">Choose Taster</button>
-      </article>
-
-      <article class="way glass rec rv" data-pick="Launch Pack">
+    <div class="sh rv"><span class="eyebrow">Prices</span><h2>Start with a pilot</h2><p>All prices plus GST. Vertical 9:16 plus landscape, one round of changes, and you sign off quick test clips before we make the finals.</p></div>
+    <div class="modes rv" role="group" aria-label="How you pay">
+      <button type="button" data-m="sale" aria-pressed="true">Pay less + A$2,500 a sale</button>
+      <button type="button" data-m="flat" aria-pressed="false">One flat price</button>
+    </div>
+    <div class="plans">
+      <article class="way glass rec rv" data-pick="Pilot">
         <span class="tag">Recommended</span>
-        <span class="kind">Pay once + per sale</span>
-        <p class="say">Pay less now. We only win when you sell.</p>
-        <h3>Launch Pack</h3>
-        <div class="size" role="group" aria-label="How many videos"><button type="button" data-n="20" aria-pressed="false">20 videos</button><button type="button" data-n="40" aria-pressed="true">40 videos</button></div>
-        <div class="price" id="lpPrice">A$3,995<small>+ GST</small></div>
-        <p class="plus">+ A$2,500 for each apartment sold through our links</p>
+        <span class="kind">Pilot</span>
+        <p class="say">See how it sells before you go big.</p>
+        <h3>2 concepts = 20 videos</h3>
+        <div class="price" data-p="Pilot">A$2,995<small>+ GST</small></div>
+        <p class="persale" data-ps="Pilot">+ A$2,500 for each apartment sold through our links</p>
         <div class="facts">
-          <div>Cinematic films<b id="lpC">10</b></div>
-          <div>Buyer versions<b id="lpA">20</b></div>
-          <div>Extras<b id="lpE">10</b></div>
-          <div>Ready in<b id="lpT">about 4 weeks</b></div>
+          <div>Cinematic cuts<b>about 5</b></div>
+          <div>Buyer versions<b>10</b></div>
+          <div>Extras<b>about 5</b></div>
+          <div>Ready in<b>about 3 weeks</b></div>
         </div>
         <button type="button" class="choose" aria-pressed="true">Chosen ✓</button>
       </article>
-
-      <article class="way glass rv" data-pick="Full launch">
-        <span class="kind">Pay once</span>
-        <p class="say">One flat price. No fee per sale.</p>
-        <h3>Full launch</h3>
-        <div class="price">A$7,495<small>+ GST</small></div>
+      <article class="way glass rv" data-pick="Full 40">
+        <span class="kind">Full 40</span>
+        <p class="say">All 40 videos you asked for.</p>
+        <h3>4 concepts = 40 videos</h3>
+        <div class="price" data-p="Full 40">A$4,995<small>+ GST</small></div>
+        <p class="persale" data-ps="Full 40">+ A$2,500 for each apartment sold through our links</p>
         <div class="facts">
-          <div>Cinematic films<b>10</b></div>
+          <div>Cinematic cuts<b>10</b></div>
           <div>Buyer versions<b>20</b></div>
           <div>Extras<b>10</b></div>
-          <div>Ready in<b>about 4 weeks</b></div>
+          <div>Ready in<b>about 5 weeks</b></div>
         </div>
-        <button type="button" class="choose" aria-pressed="false">Choose Full launch</button>
+        <button type="button" class="choose" aria-pressed="false">Choose Full 40</button>
       </article>
     </div>
 
     <article class="monthly glass rv" data-pick="Monthly">
       <span class="kind">Pay monthly</span>
-      <p class="say">Fresh videos every month, for Segara and your next builds.</p>
-      <div class="price">A$3,795<small>+ GST a month</small></div>
-      <button type="button" class="choose" aria-pressed="false">Choose Monthly</button>
+      <p class="say">After the pilot: fresh concepts every month, for Segara and your next builds.</p>
+      <div class="mrow" role="group" aria-label="Monthly size">
+        <button type="button" class="mopt" data-mo="2" aria-pressed="false"><b>A$3,995</b><span>+ GST a month · 2 concepts, 20 videos</span></button>
+        <button type="button" class="mopt" data-mo="4" aria-pressed="false"><b>A$7,495</b><span>+ GST a month · 4 concepts, 40 videos</span></button>
+      </div>
     </article>
+
+    <div class="taster glass rv" data-pick="Taster"><span>Want a peek first? <b>Taster A$995 + GST</b>: 2 moving shots from your renders + 1 still, about 5 days. Credited against the pilot.</span><button type="button" class="choose" aria-pressed="false">Choose Taster</button></div>
   </div>
 </section>
 
 <section class="s" id="sale">
   <div class="wrap">
-    <div class="sh rv"><span class="eyebrow">Launch Pack</span><h2>How the per-sale fee works</h2><p>You only pay it when a buyer comes through our videos and signs.</p></div>
+    <div class="sh rv"><span class="eyebrow">Pay less + per sale</span><h2>How the per-sale fee works</h2><p>You only pay it when a buyer comes through our videos and signs.</p></div>
     <div class="ps">
       <div class="calc glass rv">
         <label for="n" class="row"><span>Apartments sold through our links</span><b id="nv">6</b></label>
@@ -332,13 +377,9 @@ footer p+p{margin-top:8px}
 
 <section class="s" id="when">
   <div class="wrap">
-    <div class="sh rv"><span class="eyebrow">When</span><h2>40 videos in about 4 weeks</h2></div>
-    <div class="tl rv" id="tl">
-      <div class="wk glass slow"><span class="w">Week 1</span><h3>Ideas and the look</h3><p>We build Segara's look and scenes from your renders. You approve before we go on.</p><div class="bar2"><i></i></div></div>
-      <div class="wk glass"><span class="w">Week 2</span><h3>10 cinematic films</h3><p>The big hero films. You approve them.</p><div class="bar2"><i></i></div></div>
-      <div class="wk glass"><span class="w">Week 3</span><h3>20 buyer versions</h3><p>A voice-over and hook for each kind of buyer.</p><div class="bar2"><i></i></div></div>
-      <div class="wk glass"><span class="w">Week 4</span><h3>10 extras, all delivered</h3><p>Every size, ready to post.</p><div class="bar2"><i></i></div></div>
-    </div>
+    <div class="sh rv"><span class="eyebrow">When</span><h2>Week by week</h2><p>Week 1 is the slow part. After your OK, one concept lands every week.</p></div>
+    <div class="tabs rv" role="group" aria-label="Which plan"><button type="button" data-t="2" aria-pressed="true">Pilot</button><button type="button" data-t="4" aria-pressed="false">Full 40</button></div>
+    <div class="weeks rv" id="weeks"></div>
     <div class="callout glass rv"><svg class="i" style="color:var(--gold2)"><use href="#i-clock"/></svg><p>The first step (ideas, concepts and building the look) takes the most time and needs your OK. After that it moves fast.</p></div>
   </div>
 </section>
@@ -374,30 +415,39 @@ footer p+p{margin-top:8px}
 </div></footer>
 
 <div class="pickbar glass" id="pickbar" aria-live="polite">
-  <span class="t">Your pick<b id="picked">Launch Pack · 40 videos</b></span>
+  <span class="t">Your pick<b id="picked">Pilot · A$2,995 + A$2,500 a sale</b></span>
   <a class="btn gold sm wa" href="https://wa.me/61400357305"><svg class="i"><use href="#i-wa"/></svg><span><span class="ms">Message us on </span>WhatsApp</span></a>
 </div>
 
 <script>
 (function(){
-let pick='Launch Pack',size=40;
-const label=()=>pick==='Launch Pack'?`Launch Pack · ${size} videos`:pick;
+let pick='Pilot',mode='sale',mo=2;
+const PR={'Pilot':{sale:'A$2,995',flat:'A$4,995'},'Full 40':{sale:'A$4,995',flat:'A$8,995'}};
+const label=()=>pick==='Monthly'?`Monthly · ${mo} concepts (${mo*10} videos) a month`:pick==='Taster'?'Taster':`${pick} · ${mode==='sale'?PR[pick].sale+' + A$2,500 a sale':PR[pick].flat+' flat'}`;
 function sync(){
   document.getElementById('picked').textContent=label();
   const href='https://wa.me/61400357305?text='+encodeURIComponent(`Hi Brandon, I'd like the ${label()} for Segara`);
   document.querySelectorAll('a.wa').forEach(a=>a.href=href);
-  document.querySelectorAll('[data-pick]').forEach(c=>{const on=c.dataset.pick===pick;const b=c.querySelector('.choose');b.setAttribute('aria-pressed',on);b.textContent=on?'Chosen ✓':'Choose '+c.dataset.pick;});
+  document.querySelectorAll('[data-pick]').forEach(c=>{const on=c.dataset.pick===pick;const b=c.querySelector('.choose');if(b){b.setAttribute('aria-pressed',on);b.textContent=on?'Chosen ✓':'Choose '+c.dataset.pick;}});
+  document.querySelectorAll('.mopt').forEach(b=>b.setAttribute('aria-pressed',pick==='Monthly'&&+b.dataset.mo===mo));
 }
 document.querySelectorAll('[data-pick] .choose').forEach(b=>b.addEventListener('click',()=>{pick=b.closest('[data-pick]').dataset.pick;sync();}));
-const L={20:{p:'A$2,495',c:5,a:10,e:5,t:'about 3 weeks'},40:{p:'A$3,995',c:10,a:20,e:10,t:'about 4 weeks'}};
-document.querySelectorAll('.size button').forEach(b=>b.addEventListener('click',()=>{
-  size=+b.dataset.n;const v=L[size];
-  document.querySelectorAll('.size button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  document.getElementById('lpPrice').innerHTML=v.p+'<small>+ GST</small>';
-  document.getElementById('lpC').textContent=v.c;document.getElementById('lpA').textContent=v.a;document.getElementById('lpE').textContent=v.e;document.getElementById('lpT').textContent=v.t;
-  pick='Launch Pack';sync();
+document.querySelectorAll('.mopt').forEach(b=>b.addEventListener('click',()=>{pick='Monthly';mo=+b.dataset.mo;sync();}));
+document.querySelectorAll('.modes button').forEach(b=>b.addEventListener('click',()=>{
+  mode=b.dataset.m;document.querySelectorAll('.modes button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('[data-p]').forEach(el=>{el.classList.add('fade');setTimeout(()=>{el.innerHTML=PR[el.dataset.p][mode]+'<small>+ GST</small>';el.classList.remove('fade');},450);});
+  document.querySelectorAll('[data-ps]').forEach(el=>el.textContent=mode==='sale'?'+ A$2,500 for each apartment sold through our links':'No fee per sale');
+  sync();
 }));
 sync();
+/* week timeline */
+function weeks(c){
+  const rows=[`<div class="wrow glass slow"><span class="w">Week 1</span><div><h3>Ideas and the look</h3><p>We build Segara's look from your renders. You OK it.</p></div><span class="tot">0<small>videos</small></span></div>`];
+  for(let k=1;k<=c;k++)rows.push(`<div class="wrow glass"><span class="w">Week ${k+1}</span><div><h3>Concept ${k} lands</h3><p>About 10 videos: cinematic cuts, 5 buyer versions, extras.</p></div><span class="tot">${k*10}<small>videos</small></span></div>`);
+  document.getElementById('weeks').innerHTML=rows.join('');
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));weeks(+b.dataset.t);}));
+weeks(2);
 const n=document.getElementById('n');
 function upd(){const k=+n.value;document.getElementById('nv').textContent=k;
   const sold=k*190000;document.getElementById('sold').textContent=sold>=1e6?'A$'+(sold/1e6).toFixed(2)+'M':'A$'+(sold/1000).toFixed(0)+'k';
@@ -406,6 +456,7 @@ function upd(){const k=+n.value;document.getElementById('nv').textContent=k;
 n.addEventListener('input',upd);upd();
 document.getElementById('copy').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('+61400357305');b.textContent='Copied ✓';}catch(x){const r=document.createRange();r.selectNodeContents(document.querySelector('.num .digits'));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent='Selected';}setTimeout(()=>b.textContent='Copy',2400);});
 const els=[...document.querySelectorAll('.rv')];
+if(/[?&]qc/.test(location.search))els.forEach(e=>e.classList.add('in'));
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const sib=[...e.target.parentElement.children].filter(x=>x.classList.contains('rv'));e.target.style.transitionDelay=Math.min(sib.indexOf(e.target),6)*90+'ms';e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
   els.forEach(el=>io.observe(el));
