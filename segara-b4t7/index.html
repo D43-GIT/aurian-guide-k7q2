@@ -45,10 +45,12 @@ svg.i{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .btn.sm{min-height:48px;padding:0 18px;font-size:16px}
 
 /* bar */
-.bar{position:fixed;inset:0 0 auto 0;z-index:30;padding-top:env(safe-area-inset-top);transition:background 1s var(--ease),border-color 1s var(--ease);border-bottom:1px solid transparent}
+.bar{position:sticky;top:0;margin-bottom:-68px;z-index:30;padding-top:env(safe-area-inset-top);transition:background 1s var(--ease),border-color 1s var(--ease);border-bottom:1px solid transparent}
 .bar.on{background:rgba(15,14,12,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--line)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:12px}
-.bar img{width:150px;height:auto}
+.bar img{width:150px;height:auto;min-width:0}
+.top-cta{white-space:nowrap;flex:none}.top-cta .short{display:none}
+@media (max-width:380px){.bar img{width:112px}.top-cta{padding:0 14px;font-size:15px;min-height:44px}.top-cta .see{display:none}.top-cta .short{display:inline}}
 
 /* hero */
 .hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:flex-end;overflow:hidden;padding:120px 0 40px;background:var(--solid) url("m/hero.jpg") center/cover}
@@ -245,7 +247,7 @@ footer p+p{margin-top:8px}
 
 <header class="bar" id="bar"><div class="wrap">
   <img src="../img/aurianhaus-logo-light.png" alt="Aurian Haus" width="150" height="38">
-  <a class="btn gold sm" href="#pay">See the prices</a>
+  <a class="btn gold sm top-cta" href="#pay"><span class="see">See the prices</span><span class="short">Prices</span></a>
 </div></header>
 
 <section class="hero">
